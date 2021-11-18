@@ -4,6 +4,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { getErrorsByPath } from '../../../helpers/hook-form-helpers';
 
 const RadioField = ({
+  wrapperClassName,
   errors,
   innerRef,
   label,
@@ -11,15 +12,15 @@ const RadioField = ({
   options,
 }) => {
   return (
-    <>
+    <div className={`radio-field ${wrapperClassName}`}>
       <FormGroup row tag="fieldset">
-        <legend className="col-form-label col-sm-8">
+        <legend className="col-form-label col">
           {label}
         </legend>
         <Col md={2}>
           {
             options.map((o) => (
-              <FormGroup inline check>
+              <FormGroup check key={o.value} inline>
                 <Input
                   innerRef={innerRef}
                   invalid={getErrorsByPath(errors, name) && true}
@@ -48,7 +49,7 @@ const RadioField = ({
           />
         </Col>
       </Row>
-    </>
+    </div>
   )
 };
 

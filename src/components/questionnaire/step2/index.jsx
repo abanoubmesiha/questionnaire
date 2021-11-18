@@ -6,7 +6,11 @@ import schema from './schema';
 import RadioField from '../../reusable/fields/radio';
 import { businessModelOptions, yesAndNoOptions } from '../../../helpers/options'
 
-const Step1 = ({ onSubmit, step }) => {
+const Step2 = ({
+  goBack,
+  onSubmit,
+  step,
+}) => {
 
   const { register, handleSubmit, errors, watch } = useForm({
     mode: 'onChange',
@@ -17,8 +21,8 @@ const Step1 = ({ onSubmit, step }) => {
 
   return (
     <Form
-      className={step !== 1 ? 'd-none' : ''}
-      id="step1Form"
+      className={step !== 2 ? 'd-none' : ''}
+      id="step2Form"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Row className="fields">
@@ -49,7 +53,8 @@ const Step1 = ({ onSubmit, step }) => {
         </Col>
       </Row>
       <Row>
-        <Col className="d-flex justify-content-end">
+        <Col className="d-flex justify-content-between">
+          <Button type="button" color="light" onClick={goBack}>Back</Button>
           <Button type="submit" color="primary">Next</Button>
         </Col>
       </Row>
@@ -57,4 +62,4 @@ const Step1 = ({ onSubmit, step }) => {
   )
 };
 
-export default Step1;
+export default Step2;
