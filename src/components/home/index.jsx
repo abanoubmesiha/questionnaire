@@ -1,9 +1,15 @@
 import React from 'react'
+import { Button } from 'reactstrap';
 
-const Home = () => {
+const Home = ({ history }) => {
   return (
-    <section>
-      <h1>Hi</h1>
+    <section className="flex-all-center h-100">
+      <Button
+        color="primary"
+        onClick={() => history.push('./generate-business-plan')}
+      >
+        Generate Business Plan
+    </Button>
     </section>
   );
 };

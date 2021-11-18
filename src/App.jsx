@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import Header from './layout/header';
 import Footer from './layout/footer';
@@ -9,11 +10,16 @@ import './assets/styles/index.sass';
 function App() {
   return (
     <>
+    <BrowserRouter>
       <Header />
-      <Container fluid>
+      <Switch>
+        <Container fluid>
+          <Route path="/" exact component={Home} />
+        </Container>
         <Home />
-      </Container>
+      </Switch>
       <Footer />
+    </BrowserRouter>
     </>
   );
 }
