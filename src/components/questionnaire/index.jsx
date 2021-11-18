@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Row, Col } from 'reactstrap';
 import Step1 from './step1';
-import Step2 from './step2';
+// import Step2 from './step2';
 import StepperControls from './stepper-controls';
 
 const Questionnaire = () => {
@@ -14,9 +14,9 @@ const Questionnaire = () => {
           <Step1
             step={step}
           />
-          <Step2
+          {/* <Step2
             step={step}
-          />
+          /> */}
         </Col>
       </Row>
       <StepperControls
