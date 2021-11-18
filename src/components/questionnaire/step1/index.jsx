@@ -31,20 +31,20 @@ const Step1 = ({ onSubmit, step }) => {
             options={businessModelOptions}
           />
           <RadioField
-            wrapperClassName={businessModel === 'B2C' ? 'd-none' : ''}
             errors={errors}
             innerRef={register()}
             label="Do you target all age brackets?"
             name="age"
             options={yesAndNoOptions}
+            wrapperClassName={businessModel === 'B2C' ? 'd-none' : ''}
           />
           <RadioField
-            wrapperClassName={businessModel === 'B2B' ? 'd-none' : ''}
             errors={errors}
             innerRef={register()}
             label="Do you target all industries?"
             name="industries"
             options={yesAndNoOptions}
+            wrapperClassName={businessModel === 'B2B' ? 'd-none' : ''}
           />
         </Col>
       </Row>

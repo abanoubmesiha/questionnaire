@@ -6,7 +6,7 @@ const Home = ({ history }) => {
     <section className="flex-all-center h-100">
       <Button
         color="primary"
-        onClick={() => history.push('./generate-business-plan')}
+        onClick={() => history.push('/generate-business-plan')}
       >
         Generate Business Plan
     </Button>

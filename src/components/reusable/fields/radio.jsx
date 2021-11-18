@@ -4,12 +4,12 @@ import { ErrorMessage } from '@hookform/error-message';
 import { getErrorsByPath } from '../../../helpers/hook-form-helpers';
 
 const RadioField = ({
-  wrapperClassName,
   errors,
   innerRef,
   label,
   name,
   options,
+  wrapperClassName,
 }) => {
   return (
     <div className={`radio-field ${wrapperClassName}`}>

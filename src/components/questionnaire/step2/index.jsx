@@ -4,7 +4,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import schema from './schema';
 import RadioField from '../../reusable/fields/radio';
-import { businessModelOptions, yesAndNoOptions } from '../../../helpers/options'
+import InputField from '../../reusable/fields/input';
+import { yesAndNoOptions } from '../../../helpers/options'
 
 const Step2 = ({
   goBack,
@@ -17,7 +18,7 @@ const Step2 = ({
     resolver: yupResolver(schema),
   });
 
-  const { businessModel } = watch();
+  const { investment } = watch();
 
   return (
     <Form
@@ -29,33 +30,25 @@ const Step2 = ({
         <Col>
           <RadioField
             errors={errors}
-            innerRef={register({ required: true })}
-            label="Is your business model B2C or B2B or both?"
-            name="businessModel"
-            options={businessModelOptions}
-          />
-          <RadioField
-            wrapperClassName={businessModel === 'B2C' ? 'd-none' : ''}
-            errors={errors}
             innerRef={register()}
-            label="Do you target all age brackets?"
-            name="age"
+            label="Did you have an investment?"
+            name="investment"
             options={yesAndNoOptions}
           />
-          <RadioField
-            wrapperClassName={businessModel === 'B2B' ? 'd-none' : ''}
+          <InputField
+            disabled={investment !== 'true'}
             errors={errors}
             innerRef={register()}
-            label="Do you target all industries?"
-            name="industries"
-            options={yesAndNoOptions}
+            label="How much was the investment?"
+            name="investmentAmount"
+            type="number"
           />
         </Col>
       </Row>
       <Row>
         <Col className="d-flex justify-content-between">
           <Button type="button" color="light" onClick={goBack}>Back</Button>
-          <Button type="submit" color="primary">Next</Button>
+          <Button type="submit" color="primary">Submit</Button>
         </Col>
       </Row>
     </Form>
