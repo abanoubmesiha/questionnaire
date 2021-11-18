@@ -11,6 +11,7 @@ const Step2 = ({
   goBack,
   onSubmit,
   step,
+  withoutButtons,
 }) => {
 
   const { register, handleSubmit, errors, watch } = useForm({
@@ -22,7 +23,7 @@ const Step2 = ({
 
   return (
     <Form
-      className={step !== 2 ? 'd-none' : ''}
+      className={step !== 2 && step !== 'final' ? 'd-none' : ''}
       id="step2Form"
       onSubmit={handleSubmit(onSubmit)}
     >
@@ -45,10 +46,10 @@ const Step2 = ({
           />
         </Col>
       </Row>
-      <Row>
+      <Row className={withoutButtons ? 'd-none' : ''}>
         <Col className="d-flex justify-content-between">
           <Button type="button" color="light" onClick={goBack}>Back</Button>
-          <Button type="submit" color="primary">Submit</Button>
+          <Button type="submit" color="primary">Next</Button>
         </Col>
       </Row>
     </Form>

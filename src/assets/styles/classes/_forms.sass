@@ -6,4 +6,21 @@
     margin-bottom: 0.5rem
     fieldset
       margin-bottom: 0 !important
-  
+
+.flex-column
+  #step1Form,
+  #step2Form
+    .fields
+      height: auto
+      width: 50vw
+  .final-buttons
+    width: 50vw
+
+@media screen and (max-width: 375px)
+  .flex-column
+    #step1Form,
+    #step2Form
+      .fields
+        width: 90vw
+    .final-buttons
+      width: 90vw

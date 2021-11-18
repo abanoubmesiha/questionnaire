@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import Step1 from './step1';
 import Step2 from './step2';
 import SuccessAlert from './success-alert';
@@ -27,20 +27,33 @@ const Questionnaire = ({ history }) => {
   };
 
   const onSubmitStep2 = (stepData) => {
-    const formData = { ...data, ...stepData};
-    setData(formData);
-    submitFormData(formData);
+    setStep('final');
+    setData({ ...data, ...stepData});
   };
 
-  const goBack = () => setStep(1);
+  const onFinalSubmit = () => {
+    submitFormData(data);
+  };
+
+  const goBack = () => setStep(step === 'final' ? 2 : 1);
 
   return (
-    <section className="h-100">
+    <section>
       <Row>
-        <Col className="flex-all-center">
-          <Step1 onSubmit={onSubmitStep1} step={step} />
-          <Step2 goBack={goBack} onSubmit={onSubmitStep2} step={step} />
+        <Col className={`flex-all-center ${step === 'final' ? 'flex-column' : ''}`}>
+          <Step1 onSubmit={onSubmitStep1} step={step} withoutButtons={step === 'final'} />
+          <Step2 goBack={goBack} onSubmit={onSubmitStep2} step={step} withoutButtons={step === 'final'} />
           <SuccessAlert history={history} step={step} />
+          {
+            step === 'final' && (
+              <Row className="final-buttons">
+                <Col className="d-flex justify-content-between">
+                  <Button type="button" color="light" onClick={goBack}>Back</Button>
+                  <Button type="button" color="primary" onClick={onFinalSubmit}>Submit</Button>
+                </Col>
+              </Row>
+            )
+          }
         </Col>
       </Row>
     </section>
